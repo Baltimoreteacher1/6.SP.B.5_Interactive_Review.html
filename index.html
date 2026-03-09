@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>6.SP.B.5 Interactive Review</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;margin:0;padding:0}
+header{background:#263238;color:white;padding:16px;text-align:center}
+.tabs{display:flex;flex-wrap:wrap;background:#37474f}
+.tabs button{
+flex:1;padding:14px;border:none;background:#37474f;color:white;
+cursor:pointer;font-size:16px
+}
+.tabs button.active{background:#009688}
+.section{display:none;padding:20px}
+.section.active{display:block}
+.card{
+background:white;border-radius:8px;padding:16px;margin:10px 0;
+box-shadow:0 2px 6px rgba(0,0,0,.15)
+}
+.correct{color:green;font-weight:bold}
+.wrong{color:red;font-weight:bold}
+button.check{margin-top:10px;padding:8px 12px}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>Grade 6 Math Review — Standard 6.SP.B.5</h2>
+<p>Summarizing and describing distributions</p>
+</header>
+
+<div class="tabs">
+<button onclick="openTab(event,'vocab')" class="active">Vocabulary</button>
+<button onclick="openTab(event,'mean')">Mean</button>
+<button onclick="openTab(event,'median')">Median</button>
+<button onclick="openTab(event,'spread')">Spread</button>
+<button onclick="openTab(event,'describe')">Describe Data</button>
+<button onclick="openTab(event,'misconception')">Common Mistakes</button>
+</div>
+
+<div id="vocab" class="section active">
+<div class="card">
+<h3>Key Vocabulary</h3>
+<ul>
+<li><b>Distribution</b> — how data values are spread out</li>
+<li><b>Mean</b> — the average of the data</li>
+<li><b>Median</b> — the middle value when data are ordered</li>
+<li><b>Interquartile Range (IQR)</b> — distance between Q1 and Q3</li>
+<li><b>Mean Absolute Deviation (MAD)</b> — average distance from the mean</li>
+</ul>
+</div>
+</div>
+
+<div id="mean" class="section">
+<div class="card">
+<p>Data set: 4, 6, 8, 10</p>
+
+<select id="meanQ">
+<option value="">Choose answer</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+</select>
+
+<button class="check" onclick="checkMean()">Check</button>
+
+<p id="meanResult"></p>
+</div>
+</div>
+
+<div id="median" class="section">
+<div class="card">
+<p>Data set: 3, 5, 7, 11, 20</p>
+
+<select id="medianQ">
+<option value="">Choose answer</option>
+<option>5</option>
+<option>7</option>
+<option>11</option>
+<option>9</option>
+</select>
+
+<button class="check" onclick="checkMedian()">Check</button>
+
+<p id="medianResult"></p>
+</div>
+</div>
+
+<div id="spread" class="section">
+<div class="card">
+<p>Which statistic describes how spread out the data are?</p>
+
+<select id="spreadQ">
+<option value="">Choose answer</option>
+<option>Mean</option>
+<option>Median</option>
+<option>Mean Absolute Deviation</option>
+<option>Mode</option>
+</select>
+
+<button class="check" onclick="checkSpread()">Check</button>
+
+<p id="spreadResult"></p>
+</div>
+</div>
+
+<div id="describe" class="section">
+<div class="card">
+<p>Data: 4, 5, 5, 6, 7, 9</p>
+
+<p>Which statement is correct?</p>
+
+<select id="describeQ">
+<option value="">Choose answer</option>
+<option>The median is 7</option>
+<option>The median is 5.5</option>
+<option>The mean is 6</option>
+<option>The mean is 7</option>
+</select>
+
+<button class="check" onclick="checkDescribe()">Check</button>
+
+<p id="describeResult"></p>
+</div>
+</div>
+
+<div id="misconception" class="section">
+<div class="card">
+<h3>Common Misconceptions</h3>
+<ul>
+<li>Mean is always a number in the data set ❌</li>
+<li>Median must be a data value ❌</li>
+<li>Spread measures how far data values vary ✔</li>
+</ul>
+</div>
+</div>
+
+<script>
+function openTab(evt,tab){
+let sections=document.querySelectorAll(".section");
+sections.forEach(s=>s.classList.remove("active"));
+document.getElementById(tab).classList.add("active");
+
+let tabs=document.querySelectorAll(".tabs button");
+tabs.forEach(t=>t.classList.remove("active"));
+evt.currentTarget.classList.add("active");
+}
+
+function checkMean(){
+let val=document.getElementById("meanQ").value;
+let out=document.getElementById("meanResult");
+if(val==="7"){out.innerHTML="✔ Correct";out.className="correct";}
+else{out.innerHTML="✘ Try again";out.className="wrong";}
+}
+
+function checkMedian(){
+let val=document.getElementById("medianQ").value;
+let out=document.getElementById("medianResult");
+if(val==="7"){out.innerHTML="✔ Correct";out.className="correct";}
+else{out.innerHTML="✘ Try again";out.className="wrong";}
+}
+
+function checkSpread(){
+let val=document.getElementById("spreadQ").value;
+let out=document.getElementById("spreadResult");
+if(val==="Mean Absolute Deviation"){out.innerHTML="✔ Correct";out.className="correct";}
+else{out.innerHTML="✘ Try again";out.className="wrong";}
+}
+
+function checkDescribe(){
+let val=document.getElementById("describeQ").value;
+let out=document.getElementById("describeResult");
+if(val==="The mean is 6"){out.innerHTML="✔ Correct";out.className="correct";}
+else{out.innerHTML="✘ Try again";out.className="wrong";}
+}
+</script>
+
+</body>
+</html>
